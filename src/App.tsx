@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import { getPokemonByIdOrName, Pokemon  } from './pokemon';
-
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { getPokemonList, Pokemon } from "./pokemon";
 
 function App() {
-  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
-  const pokemonId = "25";
-
+  // ポケモンのリストを格納する state
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const startID = 1;
+  const endID = 9;
   useEffect(() => {
-    async function fetchPokemon() {
+    async function fetchPokemonList() {
       try {
-        const data = await getPokemonByIdOrName(pokemonId);
-        setPokemon(data);
-      } catch (e) {
-        console.error(e);
+        const fetchedPokemonList = await getPokemonList(startID, endID);
+        setPokemonList(fetchedPokemonList);
+      } catch (error) {
+        console.error("ポケモンリストの取得に失敗しました:", error);
       }
     }
 
-    fetchPokemon();
-  }, [pokemonId]);
+    fetchPokemonList();
+  }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        {pokemon ? (
-          <p>
-            <h2>{pokemon.name}</h2>
-            {pokemon.sprites.other['official-artwork'].front_default && (
+        <h1>Pokemon List</h1>
+        <ul>
+          {pokemonList.map((pokemon, index) => (
+            <li key={index}>
+              <h3>{pokemon.name}</h3>
               <img
-                src={pokemon.sprites.other['official-artwork'].front_default}
-                alt={`${pokemon.name}`}
+                src={pokemon.sprites.other["official-artwork"].front_default}
+                alt={`${pokemon.name}の公式アートワーク`}
+                style={{ width: '150px', height: '150px' }} // 幅と高さを調整
               />
-            )}
-          </p>
-        ) : (
-          <p>Loading...</p>
-        )}
+            </li>
+          ))}
+        </ul>
       </header>
     </div>
   );
