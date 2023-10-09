@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { getPokemonByIdOrName } from './pokemon'; // 正しいファイルパスを指定してください
+import { getPokemonByIdOrName, Pokemon  } from './pokemon';
 
-interface Pokemon {
-  name: string;
-  url: string;
-  sprites: {
-    other: {
-      'official-artwork': {
-        front_default: string; // 公式アートワーク画像のURL
-      };
-    };
-  };
-}
+
 function App() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const pokemonId = "25";
@@ -30,10 +20,6 @@ function App() {
     fetchPokemon();
   }, [pokemonId]);
 
-
-
-
-
   return (
     <div className="App">
       <header className="App-header">
@@ -43,7 +29,7 @@ function App() {
             {pokemon.sprites.other['official-artwork'].front_default && (
               <img
                 src={pokemon.sprites.other['official-artwork'].front_default}
-                alt={`${pokemon.name}の公式アートワーク`}
+                alt={`${pokemon.name}`}
               />
             )}
           </p>
