@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #FFFFF0;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -35,4 +35,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.pokemon-grid {
+  /* ポケモンを3匹ずつ、3行で表示するためのスタイル */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3列のグリッド */
+  gap: 20px; /* グリッドアイテム間の間隔 */
+  /* 他のスタイルプロパティを追加 */
 }

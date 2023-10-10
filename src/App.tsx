@@ -24,18 +24,18 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Pokemon List</h1>
-        <ul>
+        <div className="pokemon-grid">
           {pokemonList.map((pokemon, index) => (
-            <li key={index}>
-              <h3>{pokemon.name}</h3>
+            <div className="pokemon-item" key={pokemon.name}>
               <img
                 src={pokemon.sprites.other["official-artwork"].front_default}
-                alt={`${pokemon.name}の公式アートワーク`}
+                alt={pokemon.name}
                 style={{ width: '150px', height: '150px' }} // 幅と高さを調整
               />
-            </li>
+              <p>{pokemon.name}</p>
+            </div>
           ))}
-        </ul>
+        </div>
       </header>
     </div>
   );
