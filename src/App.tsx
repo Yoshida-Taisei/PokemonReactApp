@@ -23,14 +23,14 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Pokemon List</h1>
+        <h1>ポケモン図鑑</h1>
         <div className="pokemon-grid">
           {pokemonList.map((pokemon, index) => (
             <div className="pokemon-item" key={pokemon.name}>
               <img
                 src={pokemon.sprites.other["official-artwork"].front_default}
                 alt={pokemon.name}
-                style={{ width: '150px', height: '150px' }} // 幅と高さを調整
+                style={{ width: '150px', height: '150px' }}
               />
               <p>{pokemon.name}</p>
             </div>
