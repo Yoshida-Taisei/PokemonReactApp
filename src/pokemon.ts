@@ -30,7 +30,6 @@ export async function getPokemonList(
       const pokemon: Pokemon = response.data;
       // ポケモン名を翻訳する
       const name_ja = tranceName(pokemon.name);
-      console.log(name_ja);
       if (name_ja) {
         pokemon.name = name_ja;
       }
@@ -53,7 +52,6 @@ export async function getPokemonList(
 // ポケモン名の対応表から日本語名を取得する
 function tranceName(englishName:string) {
   for (const pokemon of pokemonNameMapping) {
-      console.log(pokemon.en);
       if (pokemon.en.toLowerCase() === englishName) {
           return pokemon.ja;
       }
