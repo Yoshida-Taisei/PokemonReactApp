@@ -4,6 +4,7 @@ import axios, { AxiosResponse } from "axios";
 const pokemonNameMapping = require("./pokemon.json");
 
 export interface Pokemon {
+  id: any;
   name: string;
   url: string;
   sprites: {

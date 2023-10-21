@@ -24,7 +24,7 @@ function PokemonList() {
     <div className="pokemon-grid">
       {pokemonList.map((pokemon) => (
         <div className="pokemon-item" key={pokemon.name}>
-          <Link to={`/detail/${pokemon.name}`}>
+          <Link to={`/detail/${pokemon.id}`}>
             <img
               src={pokemon.sprites.other["official-artwork"].front_default}
               alt={pokemon.name}
