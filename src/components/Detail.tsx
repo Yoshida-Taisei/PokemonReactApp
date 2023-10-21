@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getPokemonDetail } from '../pokemondetail';
+import { getPokemonDetail } from '../api/pokemondetail';
 
 function Detail() {
     const { pokemonName } = useParams<{ pokemonName: string }>();

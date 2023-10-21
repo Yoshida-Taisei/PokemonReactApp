@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 // ポケモン名の対応表をロードする
-const pokemonNameMapping = require("./pokemon.json");
+const pokemonNameMapping = require("../pokemon.json");
 
 export interface Pokemon {
   id: any;

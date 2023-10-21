@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getPokemonList, Pokemon } from "../pokemon";
+import { getPokemonList, Pokemon } from "../api/pokemonlist";
 
 function PokemonList() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const startID = 1;
   const endID = 9;
-  
+
   useEffect(() => {
     async function fetchPokemonList() {
       try {
