@@ -1,7 +1,7 @@
+
+
 .App {
   text-align: center;
-  background-color: #FFFFF0; /* こちらを追加 */
-
 }
 
 .App-logo {
@@ -16,7 +16,6 @@
 }
 
 .App-header {
-  background-color: #FFFFF0;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
