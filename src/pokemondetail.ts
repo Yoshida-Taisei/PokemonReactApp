@@ -1,9 +1,3 @@
-/*
- ポケモンAPIから詳細情報を取得する
-  $ npx tsc sample/pokemondetail.ts
-  $ node sample/pokemondetail.js
-*/
-
 import axios from "axios";
 
 export async function getPokemonDetail(pokemonNumber: number) {
@@ -15,6 +9,10 @@ export async function getPokemonDetail(pokemonNumber: number) {
     // ポケモン種族情報取得.
     const speciesUrl: string = response.data.species.url;
     const responseSpecies = await axios.get(speciesUrl);
+
+    // 画像
+    const imageUrl: string =
+      response.data.sprites.other["official-artwork"].front_default;
 
     // 名前.
     const names: { name: string; language: { name: string } }[] =
@@ -59,13 +57,8 @@ export async function getPokemonDetail(pokemonNumber: number) {
       .replace(/\s+/g, "")
       .trim();
     
-      // 出力
-    console.log(`名前: ${name}`);
-    console.log(`分類: ${generaName}`);
-    console.log(`タイプ: ${typesString}`);
-    console.log(`説明: ${formattedFlavorText}`);
-        // 詳細情報をオブジェクトとして返す
     return {
+          imageUrl: imageUrl,
           name: name,
           generaName: generaName,
           typesString: typesString,

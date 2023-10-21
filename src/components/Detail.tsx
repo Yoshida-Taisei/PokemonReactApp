@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'; // useStateのインポート
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getPokemonDetail } from '../pokemondetail';
 
 function Detail() {
     const { pokemonName } = useParams<{ pokemonName: string }>();
     const [pokemonDetail, setPokemonDetail] = useState({
+        imageUrl: "",
         name: "",
         generaName: "",
         typesString: "",
@@ -25,7 +26,11 @@ function Detail() {
 
     return (
         <div>
-            <h2>{pokemonDetail.name}の詳細ページ</h2>
+            <img
+                src={pokemonDetail.imageUrl}
+                alt={pokemonDetail.name}
+                style={{ width: "150px", height: "150px" }}
+            />
             <p><strong>名前:</strong> {pokemonDetail.name}</p>
             <p><strong>分類:</strong> {pokemonDetail.generaName}</p>
             <p><strong>タイプ:</strong> {pokemonDetail.typesString}</p>

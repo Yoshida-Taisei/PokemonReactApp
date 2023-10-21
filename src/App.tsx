@@ -13,7 +13,7 @@ function App() {
         </header>
 
         <Routes>
-          <Route path="/" element={<PokemonList />} /> {/* ホームページにPokemonListを表示 */}
+          <Route path="/" element={<PokemonList />} />
           <Route path="/detail/:pokemonName" element={<Detail />} />
         </Routes>
       </div>
