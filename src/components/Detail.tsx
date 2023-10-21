@@ -16,7 +16,9 @@ function Detail() {
         async function fetchPokemonDetail() {
             try {
                 const detail = await getPokemonDetail(Number(pokemonName));
-                setPokemonDetail(detail);
+                if (detail) {
+                    setPokemonDetail(detail);
+                }
             } catch (error) {
                 console.error(error);
             }
