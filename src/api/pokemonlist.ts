@@ -1,9 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 
 // ポケモン名の対応表をロードする
-const pokemonNameMapping = require("./pokemon.json");
+const pokemonNameMapping = require("../pokemon.json");
 
 export interface Pokemon {
+  id: any;
   name: string;
   url: string;
   sprites: {
@@ -30,7 +31,6 @@ export async function getPokemonList(
       const pokemon: Pokemon = response.data;
       // ポケモン名を翻訳する
       const name_ja = tranceName(pokemon.name);
-      console.log(name_ja);
       if (name_ja) {
         pokemon.name = name_ja;
       }
@@ -53,10 +53,12 @@ export async function getPokemonList(
 // ポケモン名の対応表から日本語名を取得する
 function tranceName(englishName:string) {
   for (const pokemon of pokemonNameMapping) {
-      console.log(pokemon.en);
       if (pokemon.en.toLowerCase() === englishName) {
           return pokemon.ja;
       }
   }
   return null; 
 }
+
+
+
